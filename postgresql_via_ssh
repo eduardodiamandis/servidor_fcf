@@ -1,0 +1,12 @@
+# Crie sua chave SSH (o comando precisa ser este, mude apenas o caminho nome_da_chave)
+ssh-keygen -t rsa -b 4096 -m PEM -f ~/.ssh/nome_da_chave
+#Caso queira criar chave padrão usar id_rsa em nome_da_chave
+
+# Permita conexões externas ao postgresql
+sudo nano /etc/postgresql/13/main/postgresql.conf
+# Altere #listen_addresses = '...'
+# Para listen_addresses = '*'
+
+# Se houver proxies na rede, altere /etc/postgresql/13/main/pg_hba.conf
+# Adicione ao final (mude proxy_ip para o IP do proxy)
+host    all             all             proxy_ip/32        md5
